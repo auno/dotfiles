@@ -1,0 +1,13 @@
+[github]
+	user = auno
+[user]
+	name = Mikael Auno
+	email = auno@kth.se
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+	stat = status
+[core]
+    excludesfile = /home/auno/.gitignore
