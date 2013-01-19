@@ -1,0 +1,5 @@
+#!/bin/bash
+
+toLower() {
+  echo $1 | tr "[:upper:]" "[:lower:]" 
+}
