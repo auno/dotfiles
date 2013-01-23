@@ -1,5 +1,3 @@
-[github]
-	user = auno
 [user]
 	name = Mikael Auno
 	email = auno@kth.se
@@ -11,5 +9,9 @@
 	stat = status
 [core]
     excludesfile = /home/auno/.gitignore
+[push]
+	default = simple
+[github]
+	user = auno
 [include]
     path = .gitconfig-host-specific
