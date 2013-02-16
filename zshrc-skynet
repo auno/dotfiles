@@ -15,10 +15,6 @@ alias make=make\ -j4
 alias ack=ack-grep
 alias s=stopalarm\ -s
 
-if [ "$DISPLAY" != ":0.0" ]; then 
-    alias mplayer="mplayer -vf scale=912:-3,expand=960:740"
-fi
-
 if [ "$DISPLAY" != "" ]; then
     xset -b
 fi
