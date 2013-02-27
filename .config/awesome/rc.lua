@@ -386,6 +386,72 @@ end)
 
 mymail:buttons(awful.util.table.join(awful.button({ }, 1, mymailupdate)))
 
+-- Calendar and timezones
+--mytextclock:add_signal('mouse::enter', function()
+    --mytextclockpopup = naughty.notify({
+        --text = mymailsummary,
+        --timeout = 0
+    --})
+--end)
+
+local calendar = nil
+local offset = 0
+
+function remove_calendar()
+    if calendar ~= nil then
+        naughty.destroy(calendar)
+        calendar = nil
+        offset = 0
+    end
+end
+
+function add_calendar(inc_offset)
+    local save_offset = offset
+    remove_calendar()
+    offset = save_offset + inc_offset
+    local datespec = os.date("*t")
+    datespec = datespec.year * 12 + datespec.month - 1 + offset
+    datespec = (datespec % 12 + 1) .. " " .. math.floor(datespec / 12)
+
+    -- Build cal string
+    local cal = "\n" .. awful.util.pread("cal -m " .. datespec)
+    cal = string.gsub(cal, "_.(%d)", "<span color=\"#555555\">%1</span>")
+    cal = string.gsub(cal, "\n", "\n  ")
+    cal = string.gsub(cal, "\n%s*\n", "\n")
+
+    -- Build time string
+    local time = ""
+    for i,tz in ipairs({ ":Europe/Moscow", ":Europe/Stockholm", "UTC", ":US/Pacific" }) do
+        local tmp = string.gsub(awful.util.pread("TZ=" .. tz .. " date +\"%Z: %a %b %d, %H:%M\""), "^%s*(.-)%s*$", "%1")
+        if tz == ":Europe/Stockholm" then
+            tmp = "<span color=\"#555555\">" .. tmp .. "</span>"
+        end
+        time = time .. " " .. tmp .. " \n"
+    end
+    time = string.gsub(time, "%s*\n$", "")
+
+    -- Show notification
+    calendar = naughty.notify({
+        text = string.format('<span font_desc="%s">%s\n%s</span>', "monospace", time, cal),
+        timeout = 0,
+        hover_timeout = 0.5
+    })
+end
+
+mytextclock:add_signal("mouse::enter", function()
+    add_calendar(0)
+end)
+mytextclock:add_signal("mouse::leave", remove_calendar)
+
+mytextclock:buttons(awful.util.table.join(
+    awful.button({ }, 4, function()
+        add_calendar(-1)
+    end),
+    awful.button({ }, 5, function()
+        add_calendar(1)
+    end)
+))
+
 -- }}}
 
 -- {{{ Update widgets
