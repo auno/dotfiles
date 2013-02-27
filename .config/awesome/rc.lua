@@ -351,10 +351,10 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- {{{ Update widgets
--- Check mail
-mymailtimer = timer({ timeout = 30 })
-mymailtimer:add_signal("timeout", function() 
+-- {{{ Info boxes
+-- Mail
+
+mymailupdate = function() 
     local f = io.open("/home/auno/temp/mymail") 
     local l = nil
     if f ~= nil then
@@ -365,7 +365,32 @@ mymailtimer:add_signal("timeout", function()
     f:close()
 
     mymail.text = l
-    os.execute("~/.local/bin/unread.py > ~/temp/mymail &")
+    os.execute("~/.local/bin/unread.py &")
+end
+
+mymail:add_signal('mouse::enter', function()
+    local f = io.open("/home/auno/temp/mymail.popup", "r") 
+    local mymailsummary = f:read("*all")
+    f:close()
+
+    mymailpopup = naughty.notify({
+        title = "Unread mail",
+        text = mymailsummary,
+        timeout = 0
+    })
 end)
+
+mymail:add_signal('mouse::leave', function()
+    naughty.destroy(mymailpopup)
+end)
+
+mymail:buttons(awful.util.table.join(awful.button({ }, 1, mymailupdate)))
+
+-- }}}
+
+-- {{{ Update widgets
+-- Check mail
+mymailtimer = timer({ timeout = 30 })
+mymailtimer:add_signal("timeout", mymailupdate)
 mymailtimer:start()
 -- }}}
