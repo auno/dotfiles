@@ -387,12 +387,6 @@ end)
 mymail:buttons(awful.util.table.join(awful.button({ }, 1, mymailupdate)))
 
 -- Calendar and timezones
---mytextclock:add_signal('mouse::enter', function()
-    --mytextclockpopup = naughty.notify({
-        --text = mymailsummary,
-        --timeout = 0
-    --})
---end)
 
 local calendar = nil
 local offset = 0
@@ -415,7 +409,7 @@ function add_calendar(inc_offset)
 
     -- Build cal string
     local cal = "\n" .. awful.util.pread("cal -m " .. datespec)
-    cal = string.gsub(cal, "_.(%d)", "<span color=\"#555555\">%1</span>")
+    cal = string.gsub(cal, "_" .. string.char(0x08) .. "(.)", "<span color=\"#555555\">%1</span>")
     cal = string.gsub(cal, "\n", "\n  ")
     cal = string.gsub(cal, "\n%s*\n", "\n")
 
