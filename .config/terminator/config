@@ -2,6 +2,8 @@
   geometry_hinting = False
   tab_position = hidden
 [keybindings]
+  go_left = None
+  go_right = None
 [profiles]
   [[default]]
     scrollbar_position = hidden
