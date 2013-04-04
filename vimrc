@@ -67,6 +67,8 @@ if &t_Co >= 256
 else
     colorscheme desert
 endif
+" Reset SignColumn in case colorscheme changed it
+highlight clear SignColumn
 
 " Configure tags
 set tags=./tags;/
