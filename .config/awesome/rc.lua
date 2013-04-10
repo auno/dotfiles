@@ -76,6 +76,9 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
+-- Create a battery widget
+mybattery = widget({ type = "textbox", align = "right" })
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
@@ -153,6 +156,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        mybattery,
         s == 1 and mysystray or nil,
         mymail,
         mytasklist[s],
@@ -352,8 +356,55 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 -- }}}
 
 -- {{{ Info boxes
--- Mail
+-- Battery
+local batterypopup = nil
 
+mybatteryupdate = function()
+    if os.execute("which acpi") ~= 0 then
+        mybattery.text = " <span color='red'><b>(no acpi)</b></span> "
+        return
+    end
+
+    local battery = awful.util.pread("acpi -b"):gsub("^%s*(.-)%s*$", "%1")
+    local ac = awful.util.pread("acpi -a"):gsub("^%s*(.-)%s*$", "%1")
+
+    if battery == "" then
+        mybattery.text = ""
+        return
+    end
+
+    if ac:find("on%-line") ~= nil then
+        text = "⚡"
+    else
+        text = ""
+    end
+
+    level = battery:gsub(".*, (%d+)%%,.*", "%1")
+    level = tonumber(level)
+
+    text = text .. level .. "%"
+    if (level <= 15) then
+        mybattery.text = " <span color='red'><b>" .. text .. "</b></span> " 
+    else
+        mybattery.text = " " .. text .. " " 
+    end
+end
+
+mybattery:add_signal("mouse::enter", function()
+    batterypopup = naughty.notify({
+        text = awful.util.pread("acpi -b"):gsub("\n$", ""),
+        timeout = 0,
+        hover_timeout = 0.5
+    })
+end)
+
+mybattery:add_signal("mouse::leave", function()
+    naughty.destroy(batterypopup)
+end)
+
+mybatteryupdate()
+
+-- Mail
 mymailupdate = function() 
     local f = io.open("/home/auno/temp/mymail") 
     local l = nil
@@ -449,8 +500,14 @@ mytextclock:buttons(awful.util.table.join(
 -- }}}
 
 -- {{{ Update widgets
+-- Update battery info
+mybatterytimer = timer({ timeout = 30 })
+mybatterytimer:add_signal("timeout", mybatteryupdate)
+mybatterytimer:start()
+
 -- Check mail
 mymailtimer = timer({ timeout = 30 })
 mymailtimer:add_signal("timeout", mymailupdate)
 mymailtimer:start()
+
 -- }}}
