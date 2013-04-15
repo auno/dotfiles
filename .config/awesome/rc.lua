@@ -360,7 +360,7 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 local batterypopup = nil
 
 mybatteryupdate = function()
-    if os.execute("which acpi") ~= 0 then
+    if os.execute("which acpi &> /dev/null") ~= 0 then
         mybattery.text = " <span color='red'><b>(no acpi)</b></span> "
         return
     end
@@ -379,7 +379,7 @@ mybatteryupdate = function()
         text = ""
     end
 
-    level = battery:gsub(".*, (%d+)%%,.*", "%1")
+    level = battery:gsub(".*[^%d](%d+)%%.*", "%1")
     level = tonumber(level)
 
     text = text .. level .. "%"
@@ -410,10 +410,10 @@ mymailupdate = function()
     local l = nil
     if f ~= nil then
        l = f:read() -- read output of command
+       f:close()
     else
        l = "  ?  "
     end
-    f:close()
 
     mymail.text = l
     os.execute("~/.local/bin/unread.py &")
