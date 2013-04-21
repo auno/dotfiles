@@ -88,6 +88,9 @@ let g:CommandTMaxFiles = 30000
 " tell ack where to find the ack command
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
+" always show sign column in git repos
+let g:gitgutter_sign_column_always = 1
+
 " change the mapleader from \ to ,
 let mapleader=","
 
