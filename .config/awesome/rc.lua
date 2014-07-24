@@ -459,7 +459,7 @@ function add_calendar(inc_offset)
     datespec = (datespec % 12 + 1) .. " " .. math.floor(datespec / 12)
 
     -- Build cal string
-    local cal = "\n" .. awful.util.pread("cal -m " .. datespec)
+    local cal = "\n" .. awful.util.pread("ncal -b " .. datespec)
     cal = string.gsub(cal, "_" .. string.char(0x08) .. "(.)", "<span color=\"#555555\">%1</span>")
     cal = string.gsub(cal, "\n", "\n  ")
     cal = string.gsub(cal, "\n%s*\n", "\n")
