@@ -466,7 +466,7 @@ function add_calendar(inc_offset)
 
     -- Build time string
     local time = ""
-    for i,tz in ipairs({ ":Europe/Moscow", ":Europe/Stockholm", "UTC", ":US/Pacific" }) do
+    for i,tz in ipairs({ ":Europe/Moscow", ":Europe/Stockholm", "UTC", ":US/Eastern", ":US/Pacific" }) do
         local tmp = string.gsub(awful.util.pread("TZ=" .. tz .. " date +\"%Z: %a %b %d, %H:%M\""), "^%s*(.-)%s*$", "%1")
         if tz == ":Europe/Stockholm" then
             tmp = "<span color=\"#555555\">" .. tmp .. "</span>"
