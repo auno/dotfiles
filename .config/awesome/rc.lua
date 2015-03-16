@@ -393,6 +393,7 @@ end
 mybattery:add_signal("mouse::enter", function()
     batterypopup = naughty.notify({
         text = awful.util.pread("acpi -b"):gsub("\n$", ""),
+        screen = mouse.screen,
         timeout = 0,
         hover_timeout = 0.5
     })
@@ -427,6 +428,7 @@ mymail:add_signal('mouse::enter', function()
     mymailpopup = naughty.notify({
         title = "Unread mail",
         text = mymailsummary,
+        screen = mouse.screen,
         timeout = 0
     })
 end)
@@ -478,6 +480,7 @@ function add_calendar(inc_offset)
     -- Show notification
     calendar = naughty.notify({
         text = string.format('<span font_desc="%s">%s\n%s</span>', "monospace", time, cal),
+        screen = mouse.screen,
         timeout = 0,
         hover_timeout = 0.5
     })
