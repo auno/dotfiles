@@ -2,6 +2,7 @@
   geometry_hinting = False
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   tab_position = hidden
+  inactive_color_offset = 1.0
 [keybindings]
   go_left = None
   go_right = None
@@ -9,6 +10,7 @@
   [[default]]
     scrollbar_position = hidden
     palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    background_image = None
     cursor_color = "#fbfbfb"
     foreground_color = "#ffffff"
     show_titlebar = False
