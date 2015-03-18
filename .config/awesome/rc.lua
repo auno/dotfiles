@@ -235,7 +235,12 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+
+    -- Sound volume
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("pactl -- set-sink-volume 1 +5%") end),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("pactl -- set-sink-volume 1 -5%") end),
+    awful.key({}, "XF86AudioMute", function () awful.util.spawn(os.getenv("HOME") .. "/.local/bin/pa-vol.sh mute") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -417,7 +422,7 @@ mymailupdate = function()
     end
 
     mymail.text = l
-    os.execute("~/.local/bin/unread.py &")
+    os.execute(os.getenv("HOME") .. "/.local/bin/unread.py &")
 end
 
 mymail:add_signal('mouse::enter', function()
