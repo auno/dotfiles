@@ -240,7 +240,10 @@ globalkeys = awful.util.table.join(
     -- Sound volume
     awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("pactl -- set-sink-volume 1 +5%") end),
     awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("pactl -- set-sink-volume 1 -5%") end),
-    awful.key({}, "XF86AudioMute", function () awful.util.spawn(os.getenv("HOME") .. "/.local/bin/pa-vol.sh mute") end)
+    awful.key({}, "XF86AudioMute", function () awful.util.spawn(os.getenv("HOME") .. "/.local/bin/pa-vol.sh mute") end),
+    
+    -- Misc
+    awful.key({}, "XF86Calculator", function () awful.util.spawn("gnome-calculator") end)
 )
 
 clientkeys = awful.util.table.join(
