@@ -9,6 +9,7 @@
 	stat = status
 [core]
     excludesfile = /home/auno/.gitignore
+    pager = less -SRFX
 [push]
 	default = simple
 [github]
