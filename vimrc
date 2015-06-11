@@ -98,3 +98,7 @@ nmap <silent> <leader>/ :nohlsearch<CR> " hide current search matches
 nmap <leader>u :GundoToggle<CR>         " toggle gundo window
 nmap <A-Left> <C-O>                     " jump back
 nmap <A-Right> <C-I>                    " jump forward
+
+" Invisible characters
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
