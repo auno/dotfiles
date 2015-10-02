@@ -35,6 +35,7 @@ set wildmenu            " show menu when tab completing commands
 set shiftround          " round indent (using > and <) to multiple of 'shiftwidth'
 set wildignore=*.o,*.obj,*.class,.git,.svn
 set ww=<,>,[,],b,s
+set pastetoggle=<leader>pp
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
