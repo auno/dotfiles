@@ -75,8 +75,19 @@ highlight clear SignColumn
 set tags=./tags;/
 map <A-]> :vsp <CR>:wincmd w<CR>:exec("tag ".expand("<cword>"))<CR>
 
-" Add file format information to status line
-set statusline=%<%f\ %h%m%r%=%{\"[\".&fileformat.\",\ \".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-13.(%l,%c%V%)\ %P
+" Clear status line
+set statusline=
+" Truncation point (%<), filename (%f), help mode (%h), modified (%m), readonly (%r)
+set statusline+=%<%f\ %h%m%r
+" Left/right alignment separator
+set statusline+=%=
+" Paste mode
+set statusline+=%{&paste?'PASTE\ ':''}
+" File format information (newline format, encoding, unicode byte order mark)
+set statusline+=%{'['.&fileformat.',\ '.(&fenc==''?&enc:&fenc).((exists('+bomb')\ &&\ &bomb)?',B':'').']\ '}
+" Line (%l), column (%c), virtual column (%V), percentage through file (%P)
+set statusline+=%-13.(%l,%c%V%)\ %P
+
 " Prevent the Perforce plugin to mess with the statusbar
 let g:p4EnableActiveStatus = 0
 
