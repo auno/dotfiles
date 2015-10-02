@@ -103,3 +103,6 @@ nmap <A-Right> <C-I>                    " jump forward
 " Invisible characters
 nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
+
+" Repeat last action in visual mode
+vnoremap . :norm.<CR>
