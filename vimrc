@@ -106,10 +106,19 @@ let g:gitgutter_sign_column_always = 1
 " change the mapleader from \ to ,
 let mapleader=","
 
+" Misc keybindings
 nmap <silent> <leader>/ :nohlsearch<CR> " hide current search matches
 nmap <leader>u :GundoToggle<CR>         " toggle gundo window
 nmap <A-Left> <C-O>                     " jump back
 nmap <A-Right> <C-I>                    " jump forward
+
+" Vertical movement in wrapped lines
+nnoremap k gk
+nnoremap j gj
+nnoremap <Up> gk
+inoremap <Up> <C-O>gk
+nnoremap <Down> gj
+inoremap <Down> <C-O>gj
 
 " Invisible characters
 nmap <leader>l :set list!<CR>
