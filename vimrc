@@ -38,7 +38,6 @@ set wildmenu            " show menu when tab completing commands
 set shiftround          " round indent (using > and <) to multiple of 'shiftwidth'
 set wildignore=*.o,*.obj,*.class,.git,.svn
 set ww=<,>,[,],b,s
-set pastetoggle=<leader>pp
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
@@ -111,6 +110,16 @@ nmap <silent> <leader>/ :nohlsearch<CR> " hide current search matches
 nmap <leader>u :GundoToggle<CR>         " toggle gundo window
 nmap <A-Left> <C-O>                     " jump back
 nmap <A-Right> <C-I>                    " jump forward
+
+" Toggle paste mode
+function! TogglePaste()
+  if &paste
+    set nopaste
+  else
+    set paste
+  endif
+endfunction
+nnoremap <leader>pp :call TogglePaste()<CR>
 
 " Vertical movement in wrapped lines
 nnoremap k gk
