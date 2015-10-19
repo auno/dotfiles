@@ -7,6 +7,9 @@ call pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on       " enable detection, plugins and indenting in one step
 
+" change the mapleader from \ to ,
+let mapleader=","
+
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=utf-8,latin1
 endif
@@ -102,9 +105,6 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 " always show sign column in git repos
 let g:gitgutter_sign_column_always = 1
-
-" change the mapleader from \ to ,
-let mapleader=","
 
 " Misc keybindings
 nmap <silent> <leader>/ :nohlsearch<CR> " hide current search matches
