@@ -1,7 +1,7 @@
 # vim: set ts=4 sw=4 expandtab:
 
 if [ -r "$HOME/.zsh/zshrc-functions" ]; then 
-. "$HOME/.zsh/zshrc-functions"
+  . "$HOME/.zsh/zshrc-functions"
 fi
 
 #
@@ -42,7 +42,7 @@ setopt PUSHD_SILENT
 #
 #  ALIAS
 #
-alias less=less\ -S
+alias less=less\ -SR
 alias ll=ls\ -l
 alias la=ls\ -a
 alias l=ls
@@ -99,12 +99,8 @@ bindkey '^Xe'   edit-command-line
 #  PROMPT
 #
 
-if [ "$UID" = "0" ]; then
-    export PROMPT=" %{${fg_bold[red]}%}%m %{$fg_bold[default]%}>%{$fg_no_bold[default]%}> %{$reset_color%}"
-    export RPROMPT="%{$fg_no_bold[default]%}%~ %{$fg_bold[default]%}[%(?.%{$fg_bold[default]%}0.%{$fg_bold[red]%}%?)%{$fg_bold[default]%}]%{$reset_color%}"
-else
-    export PROMPT=" %{${fg_bold[green]}%}%n@%m %{$fg_bold[default]%}>%{$fg_no_bold[default]%}> %{$reset_color%}"
-    export RPROMPT="%{$fg_no_bold[default]%}%~ %{$fg_bold[blue]%}[%(?.%{$fg_bold[default]%}0.%{$fg_bold[red]%}%?)%{$fg_bold[blue]%}]%{$reset_color%}"
+if [ -r "$HOME/.zsh/zshrc-prompt" ]; then 
+  . "$HOME/.zsh/zshrc-prompt"
 fi
 
 #
