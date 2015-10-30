@@ -51,14 +51,6 @@ alias g=gvim\ --remote-silent
 alias diff=diff\ -u
 alias gvim=UBUNTU_MENUPROXY=\ gvim
 
-svndiff () {
-    if which colordiff > /dev/null; then
-        svn diff "${@}" | colordiff | less -FXR
-    else
-        svn diff | less -FXR
-    fi
-}
-
 #
 #  ZSH MODULES
 #
