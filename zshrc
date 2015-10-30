@@ -38,6 +38,7 @@ setopt NO_CHECK_JOBS
 setopt NO_CLOBBER
 setopt NO_HUP
 setopt PUSHD_SILENT
+setopt RE_MATCH_PCRE
 
 #
 #  ALIAS
@@ -82,6 +83,15 @@ bindkey '^[[H'	beginning-of-line                   # HOME
 bindkey '^[[F'	end-of-line                         # END
 
 bindkey '^Xe'   edit-command-line
+
+# Prepend sudo using Alt-s
+function prepend-sudo {
+  if ! [[ $BUFFER =~ '^ *sudo ' ]]; then
+    BUFFER="sudo $BUFFER"; CURSOR+=5
+  fi
+}
+zle -N prepend-sudo
+bindkey "^[s" prepend-sudo
 
 #
 #  MISC
