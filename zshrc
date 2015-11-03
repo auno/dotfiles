@@ -96,6 +96,10 @@ bindkey "^[s" prepend-sudo
 #  MISC
 #
 
+# backward-kill-word to slash or period etc, instead of just space
+autoload -U select-word-style
+select-word-style bash
+
 #
 #  PROMPT
 #
