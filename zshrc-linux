@@ -7,4 +7,5 @@ export GPG_TTY=`tty`
 #  ALIAS
 #
 alias ls=ls\ --color=auto\ -h
+alias grep=grep\ --color=auto
 alias topproc="ps axo comm,pmem,rss,vsz --sort -rss | head -n 11"
