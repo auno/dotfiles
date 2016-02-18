@@ -19,8 +19,19 @@ vcs_precmd() {
     VCS_PROMPT=''
   fi
 }
+
+urgent() {
+  if [ "$___TERMINAL_URGENCY_HINT_FIRST_COMMAND" == "false" ]; then
+    # Echo a BELL character to cause the terminal to set the urgency hint
+    echo -en "\a"
+  fi
+
+  ___TERMINAL_URGENCY_HINT_FIRST_COMMAND=false
+}
+
 autoload -U add-zsh-hook
 add-zsh-hook precmd vcs_precmd
+add-zsh-hook precmd urgent
 
 if [[ "$UID" == "0" ]]; then
   USER_PROMPT="%m"
