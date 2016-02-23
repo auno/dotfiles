@@ -7,6 +7,15 @@
 	branch = auto
 [alias]
 	stat = status
+
+    lg = !"git lg1"
+    lg1 = !"git lg1-specific --all"
+    lg2 = !"git lg2-specific --all"
+    lg3 = !"git lg3-specific --all"
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) - %C(dim green)(%ar)%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) - %C(bold blue)%aD%C(reset) %C(dim green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) - %C(bold blue)%aD%C(reset) %C(dim green)(%ar)%C(reset) %C(bold blue)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 [core]
     excludesfile = /home/auno/.gitignore
     pager = less -SRFX
