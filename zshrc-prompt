@@ -1,7 +1,13 @@
 setopt PROMPT_SUBST
 
 git_prompt_branch() {
-  git name-rev --name-only --no-undefined --always HEAD 2>/dev/null
+  local branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+
+  if [[ "$branch" == "HEAD" || "$branch" == "" ]]; then
+    git name-rev --name-only --no-undefined --always HEAD 2>/dev/null
+  else
+    echo "$branch"
+  fi
 }
 
 git_prompt_dirty() {
