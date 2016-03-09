@@ -27,7 +27,7 @@ vcs_precmd() {
 }
 
 urgent() {
-  if [ "$___TERMINAL_URGENCY_HINT_FIRST_COMMAND" == "false" ]; then
+  if [ "$___TERMINAL_URGENCY_HINT_FIRST_COMMAND" = "false" ]; then
     # Echo a BELL character to cause the terminal to set the urgency hint
     echo -en "\a"
   fi
