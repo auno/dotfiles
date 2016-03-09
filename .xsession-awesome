@@ -1,0 +1,14 @@
+unity-settings-daemon &
+gnome-screensaver &
+#gnome-power-manager &
+#gnome-volume-control-applet &
+export `gnome-keyring-daemon --start`
+nm-applet &
+blueman-applet &
+pidgin &
+gnome-do &
+xmodmap ~/.Xmodmap-* &
+#exec awesome
+exec ck-launch-session dbus-launch --sh-syntax --exit-with-session awesome
+#exec ck-launch-session dbus-launch --sh-syntax --exit-with-session gnome-session --session awesome
+#exec gnome-session --session awesome
