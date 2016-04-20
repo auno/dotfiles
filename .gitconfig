@@ -21,6 +21,7 @@
     pager = less -SRFX
 [push]
 	default = simple
+    followTags = true
 [github]
 	user = auno
 [include]
