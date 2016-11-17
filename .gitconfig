@@ -1,12 +1,12 @@
 [user]
-	name = Mikael Auno
-	email = mikael@auno.se
+    name = Mikael Auno
+    email = mikael@auno.se
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
 [alias]
-	stat = status
+    stat = status
 
     lg = !"git lg1"
     lg1 = !"git lg1-specific --branches --remotes --tags"
@@ -20,11 +20,11 @@
     excludesfile = /home/auno/.gitignore
     pager = less -SRFX
 [push]
-	default = simple
+    default = simple
     followTags = true
 [github]
-	user = auno
+    user = auno
 [include]
     path = .gitconfig-host-specific
 [diff]
-	algorithm = patience
+    algorithm = patience
