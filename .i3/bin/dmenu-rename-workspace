@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if ! echo $PATH | tr ':' '\n' | grep -q "^$HOME/.local/bin"; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# dmenu does not like en_SE
+export LC_ALL="en_US.UTF-8"
+
+name=$(i3-msg -t get_workspaces \
+  | jq '.[]|select(.focused==true).name' -r \
+  | dmenu -i -fn 'Ubuntu Mono:size=30' -p 'Rename workspace:'
+)
+
+if [ "$?" = "0" ]; then
+  i3-msg "rename workspace to \"$name\""
+fi

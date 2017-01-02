@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if ! echo $PATH | tr ':' '\n' | grep -q "^$HOME/.local/bin"; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# dmenu does not like en_SE
+export LC_ALL="en_US.UTF-8"
+
+workspaces() {
+  i3-msg -t get_workspaces | jq '.[].name' -r | sort
+}
+
+next_free_workspace() {
+  taken=($(workspaces | grep -oP "^\d+"))
+  new=1
+
+  while [[ $new -le ${#taken[@]} && $new -eq ${taken[$((new - 1))]} ]]; do
+    new=$((new + 1))
+  done
+
+  echo $new
+}
+
+name=$( \
+  (echo new; workspaces) \
+  | dmenu -i -fn 'Ubuntu Mono:size=30' -p 'Switch to workspace:'
+)
+
+if [[ "$?" != "0" ]]; then
+  exit
+fi
+
+if [[ "$name" == "new" ]]; then
+  name=$(next_free_workspace)
+elif [[ "$name" == :* ]]; then
+  name=$(next_free_workspace)$name
+fi
+
+i3-msg "workspace \"$name\""

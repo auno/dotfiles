@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function usage(){
+	cat <<-EOM
+	Usage:
+	  notify [OPTION] TITLE [BODY]
+	
+	Help Options:
+	  -h          Shows help options.
+	
+	Application Options:
+	  -l          Sets notification urgency to: low.
+	  -n          Sets notification urgency to: normal (default).
+	  -c          Sets notification urgency to: critical.
+	  -t TIME     Specifies a timeout for the notification.
+	EOM
+
+	exit $1
+}
+
+urgency=normal
+timeout=
+while getopts 'hlnct:' OPTNAME; do
+	case $OPTNAME in
+		h) usage 0;;
+		l) urgency=low;;
+		n) urgency=normal;;
+		c) urgency=critical;;
+		t) timeout="--expire-time=$OPTARG";;
+		?) usage 2;;
+	esac
+done
+shift $(($OPTIND - 1))
+notify-send --urgency=$urgency $timeout "$1" "$2"

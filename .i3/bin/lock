@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+sleep 0.25
+xset dpms force off
+#i3lock -c 002b36
+i3lock -c 000000

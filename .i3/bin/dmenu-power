@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+if ! echo $PATH | tr ':' '\n' | grep -q "^$HOME/.local/bin"; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# dmenu does not like en_SE
+export LC_ALL="en_US.UTF-8"
+
+select=$((cat <<END-OF-MENU
+Hibernate
+Lock
+Logoff
+Poweroff
+Reboot
+Suspend
+Screensave
+i3: Restart
+i3: Reload config
+END-OF-MENU
+) | dmenu -i -fn 'Ubuntu Mono:size=30' -l 10 -p '>')
+
+function confirm {
+	[[ $(echo -e 'no\nyes' | dmenu -i -fn 'Ubuntu Mono:size=30' -p "$1") = 'yes' ]]
+}
+
+case $select in
+	Lock      ) $HOME/.i3/bin/lock;;
+	Logoff    ) confirm "Logoff?" && i3-msg exit;;
+	Suspend   ) $HOME/.i3/bin/lock && $HOME/.local/bin/suspend;;
+	Hibernate ) systemctl hibernate;;
+	Poweroff  ) confirm "Poweroff?" && systemctl poweroff;;
+	Reboot    ) confirm "Reboot?" && systemctl reboot;;
+	Screensave) sleep 1;xset dpms force off;;
+	i3*Restart) i3-msg restart;;
+	i3*Reload*) i3-msg reload; $HOME/.i3/bin/notify i3 'Configuration file reloaded.';;
+esac

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if ! echo $PATH | tr ':' '\n' | grep -q "^$HOME/.local/bin"; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# dmenu does not like en_SE
+export LC_ALL="en_US.UTF-8"
+
+dmenu-frecency

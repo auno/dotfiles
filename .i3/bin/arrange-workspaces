@@ -1,0 +1,24 @@
+#!/bin/bash
+
+TARGET="DP2-1"
+
+if [ "$1" != "" ]; then
+    TARGET="$1"
+fi
+
+workspaces_to_move=$(i3-msg -t get_workspaces | \
+    jq '.[] | .output + ";" + .name' -r | \
+    grep "^eDP1;" | \
+    grep -vP "8:chat|9:music" | \
+    cut -d';' -f 2
+)
+
+for workspace in $workspaces_to_move; do
+    current_workspace=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused == true) | .name')
+
+    if [ "$workspace" != "$current_workspace" ]; then
+        i3-msg -t command "workspace \"$workspace\""
+    fi
+
+    i3-msg -t command "move workspace to \"$TARGET\""
+done

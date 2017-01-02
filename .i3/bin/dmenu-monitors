@@ -1,0 +1,54 @@
+#!/bin/bash
+
+if ! echo $PATH | tr ':' '\n' | grep -q "^$HOME/.local/bin"; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# dmenu does not like en_SE
+export LC_ALL="en_US.UTF-8"
+
+select=$((cat <<END-OF-MENU
+Activate
+Deactivate
+Reset
+Arrange workspaces
+END-OF-MENU
+) | dmenu -i -fn 'Ubuntu Mono:size=30' -l 4 -p 'Reconfigure monitors:')
+
+test "$?" = "0" || exit
+
+function activate() {
+  active=$(i3-msg -t get_workspaces | jq ".[]|select(.focused==true).output" -r)
+  others=$(xrandr | grep -iE '(.+) connected' -o | sed -r 's/(.+) connected/\1/' | sed "s/$active//" | sed '/^$/d' | sort)
+  activate=$(echo "$others" | dmenu -i -fn 'Ubuntu Mono:size=30' -p "Activate:")
+  test -z $activate && exit 0
+  direction=$(echo -e "right-of\nleft-of\nabove\nbelow" | dmenu -i -fn 'Ubuntu Mono:size=30' -p "Position relative to $active:")
+  test -z $direction && exit 0
+  xrandr --output $activate --$direction $active --auto
+}
+
+function deactivate() {
+  active=$(i3-msg -t get_workspaces | jq ".[]|select(.focused==true).output" -r)
+  others=$(xrandr | grep -iE '(.+) connected' -o | sed -r 's/(.+) connected/\1/' | sed "s/$active//" | sed '/^$/d' | sort)
+  deactivate=$(echo $active $others | tr ' ' '\n' | dmenu -i -fn 'Ubuntu Mono:size=30' -p "Deactivate:")
+  if xrandr | grep -iPq "$deactivate connected(?! primary)"; then
+    xrandr --output $deactivate --off
+  fi
+}
+
+function reset() {
+  xrandr --auto
+}
+
+function arrange() {
+  workspaces=$(xrandr | grep -iE '(.+) connected' -o | sed -r 's/(.+) connected/\1/' | sed '/^$/d' | sort)
+  target=$(echo $workspaces | tr ' ' '\n' | dmenu -i -fn 'Ubuntu Mono:size=30' -p "Target:")
+  ~/.i3/bin/arrange-workspaces "$target"
+}
+
+case $select in
+  Activate  ) activate;;
+  Deactivate) deactivate;;
+  Reset     ) reset;;
+  Arrange*  ) arrange;;
+esac
