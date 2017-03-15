@@ -1,4 +1,4 @@
-# vim: set ts=4 sw=4 expandtab:
+# vim: set ts=2 sw=2 expandtab:
 
 #
 # EXPORTS
@@ -13,28 +13,54 @@ alias make=make\ -j4
 alias ack=ack-grep
 
 if [ "$DISPLAY" != "" ]; then
-    xset -b
+  xset -b
 fi
 
-# Load JDK chooser into a shell session *as a function*
-if [ "$UID" != "0" ]; then
-    [[ -s "$HOME/.local/opt/jdk-chooser/scripts/jdk" ]] && source "$HOME/.local/opt/jdk-chooser/scripts/jdk"
+# Lazy load JDK chooser into a shell session *as a function*
+if [[ "$UID" != "0" && -s "$HOME/.local/opt/jdk-chooser/scripts/jdk" ]]; then
+  jdk() {
+    source "$HOME/.local/opt/jdk-chooser/scripts/jdk"
+    jdk $@
+  }
 fi
 
-# Load RVM into a shell session *as a function*
-if [ "$UID" != "0" ]; then
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-fi
-
+# Lazy load RVM into a shell session *as a function*
 if [[ "$UID" != "0" && -d "$HOME/.rbenv" ]]; then
+  rbenv() {
     export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+    eval "$($HOME/.rbenv/bin/rbenv init -)"
+    rbenv $@
+  }
 fi
 
-# Load NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Lazy load NVM
+load_nvm() {
+  unset -f nvm
+  unset -f node
+  unset -f npm
 
-if [ -d "$HOME/.npm-packages/bin" ]; then
+  export NVM_DIR="$HOME/.nvm"
+
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+  if [ -d "$HOME/.npm-packages/bin" ]; then
     export PATH="$HOME/.npm-packages/bin:$PATH"
+  fi
+}
+
+if [[ "$UID" != "0" && -d "$HOME/.nvm" ]]; then
+  nvm() {
+    load_nvm
+    nvm $@
+  }
+
+  node() {
+    load_nvm
+    node $@
+  }
+
+  npm() {
+    load_nvm
+    npm $@
+  }
+
 fi
