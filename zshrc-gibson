@@ -24,7 +24,7 @@ if [[ "$UID" != "0" && -s "$HOME/.local/opt/jdk-chooser/scripts/jdk" ]]; then
   }
 fi
 
-# Lazy load RVM into a shell session *as a function*
+# Lazy load RBEnv into a shell session *as a function*
 if [[ "$UID" != "0" && -d "$HOME/.rbenv" ]]; then
   rbenv() {
     export PATH="$HOME/.rbenv/bin:$PATH"
