@@ -38,6 +38,7 @@ set wildmenu            " show menu when tab completing commands
 set shiftround          " round indent (using > and <) to multiple of 'shiftwidth'
 set wildignore=*.o,*.obj,*.class,.git,.svn
 set ww=<,>,[,],b,s
+set clipboard^=unnamedplus " use regular clipboard as default register
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
@@ -135,3 +136,9 @@ set listchars=tab:▸\ ,eol:¬
 
 " Repeat last action in visual mode
 vnoremap . :norm.<CR>
+
+" Easier split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
