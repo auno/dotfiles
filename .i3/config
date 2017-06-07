@@ -12,6 +12,9 @@
 set $mod Mod4
 set $alt Mod1
 
+set $monitor1 DP1
+set $monitor2 HDMI2
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -44,6 +47,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# change output focus
+bindsym $mod+Control+h focus output left
+bindsym $mod+Control+l focus output right
+
 # alternatively, you can use the cursor keys:
 #bindsym $mod+Left focus left
 #bindsym $mod+Down focus down
@@ -63,8 +70,8 @@ bindsym $mod+Shift+l move right
 #bindsym $mod+Shift+Right move right
 
 # move focused workspace
-bindsym $mod+Control+h move workspace to output left
-bindsym $mod+Control+l move workspace to output right
+bindsym $mod+Shift+Control+h move workspace to output left
+bindsym $mod+Shift+Control+l move workspace to output right
 
 # split in horizontal orientation
 #bindsym $mod+h split h
@@ -169,6 +176,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         status_command i3status --config ~/.i3/i3status.conf
+        tray_output primary
 }
 
 # Media keys
@@ -183,8 +191,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
 
 # Workspace settings
 
-workspace "8:chat" output eDP1
-workspace "9:music" output eDP1
+workspace "2:mail" output $monitor2
+workspace "8:chat" output $monitor2
+workspace "9:music" output $monitor2
+workspace "_:br" output $monitor2
 
 # Per client settings
 

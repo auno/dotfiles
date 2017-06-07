@@ -9,7 +9,7 @@ fi
 workspaces_to_move=$(i3-msg -t get_workspaces | \
     jq '.[] | .output + ";" + .name' -r | \
     grep "^eDP1;" | \
-    grep -vP "8:chat|9:music" | \
+    grep -vP "2:mail|8:chat|9:music|_:br" | \
     cut -d';' -f 2
 )
 
