@@ -11,6 +11,7 @@
 alias diff=colordiff\ -u
 alias make=make\ -j4
 alias ack=ack-grep
+alias gpg=gpg2
 
 if [ "$DISPLAY" != "" ]; then
   xset -b
