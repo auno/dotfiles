@@ -69,8 +69,8 @@ fi
 # Lazy load SDKMAN into a shell session *as a function*
 if [[ "$UID" != "0" && -d "$HOME/.sdkman" ]]; then
   sdk() {
-    export SDKMAN_DIR="/home/auno/.sdkman"
-    [[ -s "/home/auno/.sdkman/bin/sdkman-init.sh" ]] && source "/home/auno/.sdkman/bin/sdkman-init.sh"
+    export SDKMAN_DIR="$HOME/.sdkman"
+    [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
     sdk $@
   }
 fi
