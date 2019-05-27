@@ -47,5 +47,5 @@ else
   USER_PROMPT_COLOR="green"
 fi
 
-export PROMPT=" %{${fg_bold[$USER_PROMPT_COLOR]}%}$USER_PROMPT %{$fg_bold[default]%}>%{$fg_no_bold[default]%}> %{$reset_color%}"
+export PROMPT=" %{${fg_bold[$USER_PROMPT_COLOR]}%}$USER_PROMPT %{$fg_bold[default]%}>> %{$reset_color%}"
 export RPROMPT="%{$fg_no_bold[default]%}%~\$VCS_PROMPT %{$fg_bold[blue]%}[%(?.%{$fg_bold[default]%}0.%{$fg_bold[red]%}%?)%{$fg_bold[blue]%}]%{$reset_color%}"

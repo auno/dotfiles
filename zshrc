@@ -102,6 +102,16 @@ autoload -U select-word-style
 select-word-style bash
 
 #
+# DIRCOLORS
+#
+
+DIRCOLORS_FILE="$HOME/.dir_colors/dircolors"
+
+if [ -r "$DIRCOLORS_FILE" ]; then
+    eval $(dircolors "$DIRCOLORS_FILE")
+fi
+
+#
 #  PROMPT
 #
 
