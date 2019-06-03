@@ -26,8 +26,8 @@ set ruler               " show the cursor position all the time
 set linebreak           " don't linebreak words
 set nowrap              " don't wrap lines at all
 set laststatus=2        " always show the status line
-set ts=4                " a tab-character should be represented as 4 spaces
-set sw=4                " indent is 4 spaces
+set ts=2                " a tab-character should be represented as 4 spaces
+set sw=2                " indent is 4 spaces
 set expandtab           " insert spaces instead of tabs
 set sta                 " enable smart tab handling 
 set showmatch           " show matching parenthesis etc
