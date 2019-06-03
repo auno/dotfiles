@@ -16,9 +16,6 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = git://github.com/sjl/gundo.vim.git
 [submodule "bundle/vcscommand"]
 	path = bundle/vcscommand
 	url = git://repo.or.cz/vcscommand
@@ -40,3 +37,6 @@
 [submodule "bundle/plantuml-syntax"]
 	path = bundle/plantuml-syntax
 	url = git@github.com:aklt/plantuml-syntax.git
+[submodule "bundle/undotree"]
+	path = bundle/undotree
+	url = git@github.com:mbbill/undotree.git
