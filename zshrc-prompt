@@ -11,7 +11,7 @@ git_prompt_branch() {
 }
 
 git_prompt_dirty() {
-  git diff-index --quiet HEAD -- 2>/dev/null || echo "⚡"
+  git diff-index --quiet HEAD -- 2>/dev/null || echo "Δ"
 }
 
 git_prompt_info() {
