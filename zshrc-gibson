@@ -8,7 +8,6 @@
 #
 #  ALIAS
 #
-alias diff=colordiff\ -u
 alias make=make\ -j4
 
 if [ "$DISPLAY" != "" ]; then

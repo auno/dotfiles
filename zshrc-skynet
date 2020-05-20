@@ -10,9 +10,7 @@
 #
 alias screen=screen-wrapper
 alias telnet=ktelnet
-alias diff=colordiff\ -u
 alias make=make\ -j4
-alias ack=ack-grep
 alias s=stopalarm\ -s
 alias gpg=gpg2
 

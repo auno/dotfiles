@@ -4,9 +4,27 @@
 export GPG_TTY=`tty`
 
 #
+# DETECT COMMANDS
+#
+if command -v colordiff >/dev/null 2>&1; then
+  DIFF=colordiff
+else
+  DIFF=diff
+fi
+
+if command -v ack-grep >/dev/null 2>&1; then
+  ACK=ack-grep
+else
+  ACK=ack
+fi
+
+#
 #  ALIAS
 #
 alias ls=ls\ --color=auto\ -h
 alias grep=grep\ --color=auto
 alias topproc="ps axo comm,pmem,rss,vsz --sort -rss | head -n 11"
 alias cal=ncal\ -b
+alias sudo=sudo\ --preserve-env=HOME
+alias diff=$DIFF\ -u
+alias ack=$ACK

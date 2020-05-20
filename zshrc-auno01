@@ -13,8 +13,6 @@ export P4DIFF="colordiff -u"
 #
 # ALIAS
 #
-alias diff=colordiff\ -u
-alias ack=ack-grep
 alias make=make\ -j8
 
 #
