@@ -28,9 +28,11 @@ fi
 
 # Lazy load RBEnv into a shell session *as a function*
 if [[ "$UID" != "0" && -d "$HOME/.rbenv" ]]; then
+  export PATH="$HOME/.rbenv/shims:$PATH"
   rbenv() {
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$($HOME/.rbenv/bin/rbenv init -)"
+    rehash
     rbenv $@
   }
 fi
@@ -65,6 +67,15 @@ if [[ "$UID" != "0" && -d "$HOME/.nvm" ]]; then
     npm $@
   }
 
+fi
+
+# Lazy load SDKMAN into a shell session *as a function*
+if [[ "$UID" != "0" && -d "$HOME/.sdkman" ]]; then
+  sdk() {
+    export SDKMAN_DIR="$HOME/.sdkman"
+    [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+    sdk $@
+  }
 fi
 
 # Add Rust to PATH if available
