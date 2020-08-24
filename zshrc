@@ -7,6 +7,7 @@ fi
 #
 #  VARIABLES
 #
+
 HISTFILE=~/.zsh_history
 SAVEHIST=1000000
 HISTSIZE=1000000
@@ -14,6 +15,7 @@ HISTSIZE=1000000
 #
 # EXPORTS
 #
+
 export BROWSER=firefox
 export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
@@ -26,6 +28,7 @@ fi
 #
 #  OPTIONS
 #
+
 setopt AUTO_CONTINUE
 setopt AUTO_PUSHD
 setopt EXTENDED_HISTORY
@@ -43,6 +46,7 @@ setopt RE_MATCH_PCRE
 #
 #  ALIAS
 #
+
 alias less=less\ -SR
 alias ll=ls\ -l
 alias la=ls\ -a
@@ -56,6 +60,7 @@ alias df="df -h"
 #
 #  ZSH MODULES
 #
+
 autoload -U colors; colors
 autoload -U compinit; compinit
 autoload -U edit-command-line; zle -N edit-command-line
@@ -63,6 +68,7 @@ autoload -U edit-command-line; zle -N edit-command-line
 #
 # COMPLETION
 #
+
 zmodload -i zsh/complist
 zstyle ':completion:*' list-colors `dircolors | tr : ' '`
 
@@ -72,6 +78,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 #
 #  KEYBINDINGS
 #
+
 bindkey -e # Set initial keymap to emacs emulation.
 
 bindkey '^[[1~' beginning-of-line                   # HOME
