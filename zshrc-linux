@@ -12,12 +12,6 @@ else
   DIFF=diff
 fi
 
-if command -v ack-grep >/dev/null 2>&1; then
-  ACK=ack-grep
-else
-  ACK=ack
-fi
-
 #
 #  ALIAS
 #
@@ -27,4 +21,7 @@ alias topproc="ps axo comm,pmem,rss,vsz --sort -rss | head -n 11"
 alias cal=ncal\ -b
 alias sudo=sudo\ --preserve-env=HOME
 alias diff=$DIFF\ -u
-alias ack=$ACK
+
+if command -v ack-grep >/dev/null 2>&1; then
+  alias ack=ack-grep
+fi
