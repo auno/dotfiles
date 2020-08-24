@@ -2,6 +2,7 @@
 # EXPORTS
 #
 export GPG_TTY=`tty`
+export DOCKER_BUILDKIT=1
 
 #
 # DETECT COMMANDS
