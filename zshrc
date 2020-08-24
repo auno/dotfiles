@@ -146,3 +146,30 @@ if [ -r "$HOME/.locale" ]; then
     source "$HOME/.locale"
 fi
 
+
+#
+# Generic Colourizer (GRC)
+#
+
+# Automatically enable grc for all recognized commands if available
+if type grc > /dev/null; then
+    GRC_DIRS=("~/.grc/" "/usr/share/grc/" "/usr/local/share/grc/")
+
+    for cmd in $(ls -1 $GRC_DIRS 2>/dev/null | grep '^conf\.' | sed -r 's/^conf\.//' | sort -u); do
+        TYPE=$(type "$cmd") || continue
+
+        if alias "$cmd" > /dev/null; then
+            alias "$cmd"="grc $(whence "$cmd")"
+        else
+            alias "$cmd"="grc $cmd"
+        fi
+    done
+fi
+
+#
+# SYNTAX HIGHLIGHTING
+#
+
+if [ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
