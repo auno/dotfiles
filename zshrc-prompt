@@ -44,7 +44,7 @@ if [[ "$UID" == "0" ]]; then
   USER_PROMPT_COLOR="red"
 else
   USER_PROMPT="%n@%m"
-  USER_PROMPT_COLOR="green"
+  USER_PROMPT_COLOR="blue"
 fi
 
 export PROMPT=" %{${fg_bold[$USER_PROMPT_COLOR]}%}$USER_PROMPT %{$fg_bold[default]%}>> %{$reset_color%}"
