@@ -97,3 +97,7 @@ if [[ "$UID" != "0" && -f "$HOME/.config/broot/launcher/bash/br" ]]; then
     br $@
   }
 fi
+
+if type aws_completer > /dev/null; then
+  complete -C "$(which aws_completer)" aws
+fi

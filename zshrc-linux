@@ -7,7 +7,10 @@ export DOCKER_BUILDKIT=1
 #
 #  ALIAS
 #
-alias ls=ls\ --color=auto\ -h
+if ! alias "ls" > /dev/null; then
+  alias ls=ls\ --color=auto\ -h
+fi
+
 alias grep=grep\ --color=auto
 alias topproc="ps axo comm,pmem,rss,vsz --sort -rss | head -n 11"
 alias cal=ncal\ -b

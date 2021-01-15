@@ -64,6 +64,7 @@ alias diff=diff\ -u
 
 autoload -U colors; colors
 autoload -U compinit; compinit
+autoload -U bashcompinit; bashcompinit
 autoload -U edit-command-line; zle -N edit-command-line
 
 #
@@ -160,7 +161,9 @@ if type grc > /dev/null; then
         TYPE=$(type "$cmd") || continue
 
         if alias "$cmd" > /dev/null; then
-            alias "$cmd"="grc $(whence "$cmd")"
+            if [[ "$(whence "$cmd")" == "$cmd "* ]]; then
+                alias "$cmd"="grc $(whence "$cmd")"
+            fi
         else
             alias "$cmd"="grc $cmd"
         fi
