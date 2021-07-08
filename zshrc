@@ -16,6 +16,7 @@ HISTSIZE=1000000
 # EXPORTS
 #
 
+export DO_NOT_TRACK=1
 export BROWSER=firefox
 export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
