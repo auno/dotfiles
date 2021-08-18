@@ -3,7 +3,6 @@
 #
 #  ALIAS
 #
-alias make=make\ -j2
 
 #
 # MISC

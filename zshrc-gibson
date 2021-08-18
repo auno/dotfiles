@@ -8,8 +8,6 @@
 #
 #  ALIAS
 #
-alias make=make\ -j4
-
 if [ "$DISPLAY" != "" ]; then
   xset -b
 fi
