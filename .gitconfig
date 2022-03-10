@@ -28,3 +28,5 @@
     path = .gitconfig-host-specific
 [diff]
     algorithm = patience
+[commit]
+	verbose = true
