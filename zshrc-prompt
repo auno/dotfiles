@@ -15,7 +15,7 @@ git_prompt_dirty() {
 }
 
 git_prompt_info() {
-  echo "git:$(git_prompt_branch)$(git_prompt_dirty)"
+  echo "$(git_prompt_branch)$(git_prompt_dirty)"
 }
 
 vcs_precmd() {
