@@ -1,33 +1,33 @@
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
+	url = https://github.com/kien/ctrlp.vim.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
-	url = git://github.com/ervandew/supertab.git
+	url = https://github.com/ervandew/supertab.git
 [submodule "bundle/gnupg"]
 	path = bundle/gnupg
-	url = git://github.com/jamessan/vim-gnupg.git
+	url = https://github.com/jamessan/vim-gnupg.git
 [submodule "bundle/endwise"]
 	path = bundle/endwise
-	url = git://github.com/tpope/vim-endwise.git
+	url = https://github.com/tpope/vim-endwise.git
 [submodule "bundle/localvimrc"]
 	path = bundle/localvimrc
-	url = git://github.com/embear/vim-localvimrc.git
+	url = https://github.com/embear/vim-localvimrc.git
 [submodule "bundle/ack"]
 	path = bundle/ack
-	url = git://github.com/mileszs/ack.vim.git
+	url = https://github.com/mileszs/ack.vim.git
 [submodule "bundle/vcscommand"]
 	path = bundle/vcscommand
-	url = git://repo.or.cz/vcscommand
+	url = https://repo.or.cz/vcscommand
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
-	url = git://github.com/tpope/vim-pathogen.git
+	url = https://github.com/tpope/vim-pathogen.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
+	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/gitgutter"]
 	path = bundle/gitgutter
-	url = git://github.com/airblade/vim-gitgutter.git
+	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "bundle/ruby"]
 	path = bundle/ruby
 	url = git@github.com:vim-ruby/vim-ruby.git
