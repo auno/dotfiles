@@ -1,3 +1,5 @@
+# vim: set ts=4 sw=4 expandtab:
+
 setopt PROMPT_SUBST
 
 git_prompt_branch() {

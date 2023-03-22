@@ -1,4 +1,6 @@
-# vim: set ts=4 sw=4 expandtab:
+# vim: set ts=2 sw=2 expandtab:
+
+[[ "$HOST" = "gibson" || "$HOST" = "zero" ]] || return
 
 #
 # EXPORTS
@@ -8,14 +10,8 @@
 #
 #  ALIAS
 #
-
-alias screen=screen-wrapper
-alias telnet=ktelnet
-alias s=stopalarm\ -s
-alias gpg=gpg2
-
 if [ "$DISPLAY" != "" ]; then
-    xset -b
+  xset -b
 fi
 
 # Lazy load JDK chooser into a shell session *as a function*
@@ -78,7 +74,30 @@ if [[ "$UID" != "0" && -d "$HOME/.sdkman" ]]; then
   }
 fi
 
+# Lazy load asdf into a shell session *as a function*
+if [[ "$UID" != "0" && -d "$HOME/.asdf" ]]; then
+  asdf() {
+    export SDKMAN_DIR="$HOME/.asdf"
+    [[ -s "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
+    [[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source "$HOME/.asdf/completions/asdf.bash"
+    unset -f asdf
+    asdf $@
+  }
+fi
+
 # Add Rust to PATH if available
 if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# Lazy load broot into a shell session *as a function*
+if [[ "$UID" != "0" && -f "$HOME/.config/broot/launcher/bash/br" ]]; then
+  br() {
+    source /home/auno/.config/broot/launcher/bash/br
+    br $@
+  }
+fi
+
+if type aws_completer > /dev/null; then
+  complete -C "$(which aws_completer)" aws
 fi

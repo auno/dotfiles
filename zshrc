@@ -123,32 +123,12 @@ if [ -r "$DIRCOLORS_FILE" ]; then
 fi
 
 #
-#  PROMPT
-#
-
-if [ -r "$HOME/.zsh/zshrc-prompt" ]; then 
-  . "$HOME/.zsh/zshrc-prompt"
-fi
-
-#
 # SYSTEM/HOST SPECIFIC CONFIGURATION
 #
 
-SYSTEM=`uname -s`
-SYSTEM=`toLower $SYSTEM`
-
-if [ -r "$HOME/.zsh/zshrc-$SYSTEM" ]; then
-    source "$HOME/.zsh/zshrc-$SYSTEM"
-fi
-
-if [ -r "$HOME/.zsh/zshrc-$HOST" ]; then 
-    source "$HOME/.zsh/zshrc-$HOST"
-fi
-
-if [ -r "$HOME/.locale" ]; then
-    source "$HOME/.locale"
-fi
-
+for file in "$HOME/.zsh/zshrc.d"/*; do
+    source "$file"
+done
 
 #
 # Generic Colourizer (GRC)
