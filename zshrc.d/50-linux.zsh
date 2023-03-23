@@ -7,19 +7,3 @@
 #
 export GPG_TTY=`tty`
 export DOCKER_BUILDKIT=1
-
-#
-#  ALIAS
-#
-if ! alias "ls" > /dev/null; then
-  alias ls=ls\ --color=auto\ -h
-fi
-
-alias grep=grep\ --color=auto
-alias topproc="ps axo comm,pmem,rss,vsz --sort -rss | head -n 11"
-alias cal=ncal\ -b
-alias sudo=sudo\ --preserve-env=HOME
-
-if command -v ack-grep >/dev/null 2>&1; then
-  alias ack=ack-grep
-fi

@@ -19,7 +19,6 @@ HISTSIZE=1000000
 export DO_NOT_TRACK=1
 export BROWSER=firefox
 export EDITOR=vim
-export PATH="$HOME/.local/bin:$PATH"
 export PAGER=less
 
 if [ "$DISPLAY" != "" ]; then
@@ -43,21 +42,6 @@ setopt NO_CLOBBER
 setopt NO_HUP
 setopt PUSHD_SILENT
 setopt RE_MATCH_PCRE
-
-#
-#  ALIAS
-#
-
-alias less=less\ -SR
-alias ll=ls\ -l
-alias la=ls\ -a
-alias l=ls
-alias lla=ls\ -la
-alias g=gvim\ --remote-silent
-alias diff=diff\ -u
-alias gvim=UBUNTU_MENUPROXY=\ gvim
-alias df="df -h"
-alias diff=diff\ -u
 
 #
 #  ZSH MODULES
@@ -123,38 +107,17 @@ if [ -r "$DIRCOLORS_FILE" ]; then
 fi
 
 #
-# SYSTEM/HOST SPECIFIC CONFIGURATION
-#
-
-for file in "$HOME/.zsh/zshrc.d"/*; do
-    source "$file"
-done
-
-#
-# Generic Colourizer (GRC)
-#
-
-# Automatically enable grc for all recognized commands if available
-if type grc > /dev/null; then
-    GRC_DIRS=("~/.grc/" "/usr/share/grc/" "/usr/local/share/grc/")
-
-    for cmd in $(ls -1 $GRC_DIRS 2>/dev/null | grep '^conf\.' | sed -r 's/^conf\.//' | sort -u); do
-        TYPE=$(type "$cmd") || continue
-
-        if alias "$cmd" > /dev/null; then
-            if [[ "$(whence "$cmd")" == "$cmd "* ]]; then
-                alias "$cmd"="grc $(whence "$cmd")"
-            fi
-        else
-            alias "$cmd"="grc $cmd"
-        fi
-    done
-fi
-
-#
 # SYNTAX HIGHLIGHTING
 #
 
 if [ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
     source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
+
+#
+# INCLUDE CONFIG DIR
+#
+
+for file in "$HOME"/.zsh/zshrc.d/*.zsh; do
+    source "$file"
+done

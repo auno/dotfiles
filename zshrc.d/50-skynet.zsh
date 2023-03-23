@@ -79,8 +79,3 @@ if [[ "$UID" != "0" && -d "$HOME/.sdkman" ]]; then
     sdk $@
   }
 fi
-
-# Add Rust to PATH if available
-if [ -d "$HOME/.cargo/bin" ]; then
-  export PATH="$HOME/.cargo/bin:$PATH"
-fi

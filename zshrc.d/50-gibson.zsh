@@ -85,11 +85,6 @@ if [[ "$UID" != "0" && -d "$HOME/.asdf" ]]; then
   }
 fi
 
-# Add Rust to PATH if available
-if [ -d "$HOME/.cargo/bin" ]; then
-  export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
 # Lazy load broot into a shell session *as a function*
 if [[ "$UID" != "0" && -f "$HOME/.config/broot/launcher/bash/br" ]]; then
   br() {
