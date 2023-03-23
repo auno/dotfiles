@@ -10,9 +10,6 @@
 [submodule "bundle/endwise"]
 	path = bundle/endwise
 	url = https://github.com/tpope/vim-endwise.git
-[submodule "bundle/localvimrc"]
-	path = bundle/localvimrc
-	url = https://github.com/embear/vim-localvimrc.git
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
