@@ -1,4 +1,4 @@
-# vim: set ts=4 sw=4 expandtab:
+# vim: set ts=2 sw=2 expandtab:
 
 setopt PROMPT_SUBST
 

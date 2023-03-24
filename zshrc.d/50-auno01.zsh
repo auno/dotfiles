@@ -1,4 +1,4 @@
-# vim: set ts=4 sw=4 expandtab:
+# vim: set ts=2 sw=2 expandtab:
 
 [[ "$HOST" = "auno01" ]] || return
 
@@ -23,5 +23,5 @@ xset -b
 
 # Load RVM into a shell session *as a function*
 if [ "$UID" != "0" ]; then
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 fi
