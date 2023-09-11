@@ -1,8 +1,8 @@
 # vim: set ts=2 sw=2 expandtab:
 
-if type exa > /dev/null; then
-  alias exa=exa\ --group-directories-first
-  alias ls=exa
+if type eza > /dev/null; then
+  alias eza=eza\ --group-directories-first
+  alias ls=eza
 elif [[ "$OS" = "linux" ]]; then
   alias ls=ls\ --color=auto\ -h
 else
