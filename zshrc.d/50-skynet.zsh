@@ -24,7 +24,7 @@ fi
 if [[ "$UID" != "0" && -s "$HOME/.local/opt/jdk-chooser/scripts/jdk" ]]; then
   jdk() {
     source "$HOME/.local/opt/jdk-chooser/scripts/jdk"
-    jdk $@
+    jdk "$@"
   }
 fi
 
@@ -35,7 +35,7 @@ if [[ "$UID" != "0" && -d "$HOME/.rbenv" ]]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$($HOME/.rbenv/bin/rbenv init -)"
     rehash
-    rbenv $@
+    rbenv "$@"
   }
 fi
 
@@ -56,17 +56,17 @@ load_nvm() {
 if [[ "$UID" != "0" && -d "$HOME/.nvm" ]]; then
   nvm() {
     load_nvm
-    nvm $@
+    nvm "$@"
   }
 
   node() {
     load_nvm
-    node $@
+    node "$@"
   }
 
   npm() {
     load_nvm
-    npm $@
+    npm "$@"
   }
 
 fi
@@ -76,6 +76,6 @@ if [[ "$UID" != "0" && -d "$HOME/.sdkman" ]]; then
   sdk() {
     export SDKMAN_DIR="$HOME/.sdkman"
     [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-    sdk $@
+    sdk "$@"
   }
 fi
