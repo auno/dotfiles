@@ -39,38 +39,6 @@ if [[ "$UID" != "0" && -d "$HOME/.rbenv" ]]; then
   }
 fi
 
-# Lazy load NVM
-load_nvm() {
-  unset -f nvm
-  unset -f node
-  unset -f npm
-
-  export NVM_DIR="$HOME/.nvm"
-
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-  if [ -d "$HOME/.npm-packages/bin" ]; then
-    export PATH="$HOME/.npm-packages/bin:$PATH"
-  fi
-}
-
-if [[ "$UID" != "0" && -d "$HOME/.nvm" ]]; then
-  nvm() {
-    load_nvm
-    nvm "$@"
-  }
-
-  node() {
-    load_nvm
-    node "$@"
-  }
-
-  npm() {
-    load_nvm
-    npm "$@"
-  }
-
-fi
-
 # Lazy load SDKMAN into a shell session *as a function*
 if [[ "$UID" != "0" && -d "$HOME/.sdkman" ]]; then
   sdk() {
