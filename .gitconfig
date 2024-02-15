@@ -31,3 +31,5 @@
     external = difft
 [commit]
 	verbose = true
+[rerere]
+	enabled = true
