@@ -19,6 +19,7 @@ alias diff=diff\ -u
 alias gvim=UBUNTU_MENUPROXY=\ gvim
 alias df=df\ -h
 alias diff=diff\ -u
+alias d=dirs\ -v
 
 if type ack-grep > /dev/null; then
   alias ack=ack-grep
