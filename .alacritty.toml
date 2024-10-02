@@ -1,0 +1,49 @@
+[colors.bright]
+black = "#2e3436"
+blue = "#729fcf"
+cyan = "#fcaf3e"
+green = "#8ae234"
+magenta = "#ad7fa8"
+red = "#ef2929"
+white = "#eeeeec"
+yellow = "#fce94f"
+
+[colors.normal]
+black = "#2e3436"
+blue = "#3465a4"
+cyan = "#f57900"
+green = "#73d216"
+magenta = "#75507b"
+red = "#cc0000"
+white = "#d3d7cf"
+yellow = "#edd400"
+
+[colors.primary]
+background = "#000000"
+foreground = "#eeeeec"
+
+[font]
+size = 11.5
+
+[font.normal]
+family = "Ubuntu Mono"
+
+[[hints.enabled]]
+command = "xdg-open"
+post_processing = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Control|Shift"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "Control"
+
+[scrolling]
+history = 10000
+
+[window.dimensions]
+columns = 135
+lines = 35
