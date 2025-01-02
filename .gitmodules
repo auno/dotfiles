@@ -1,6 +1,6 @@
 [submodule ".vim"]
 	path = .vim
-	url = git@github.com:auno/.vim.git
+	url = ../.vim.git
 [submodule ".zsh"]
 	path = .zsh
-	url = git@github.com:auno/.zsh.git
+	url = ../.zsh.git
