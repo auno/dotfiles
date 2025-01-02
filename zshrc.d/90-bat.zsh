@@ -11,6 +11,7 @@ fi
 
 if type $BAT > /dev/null; then
   export MANPAGER="sh -c 'col -bx | $BAT -l man -p'"
+  export MANROFFOPT="-c"
   alias -g -- '--help'='--help | bat -plhelp'
 fi
 
