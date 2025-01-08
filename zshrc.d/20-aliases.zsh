@@ -20,6 +20,7 @@ alias gvim=UBUNTU_MENUPROXY=\ gvim
 alias df=df\ -h
 alias diff=diff\ -u
 alias d=dirs\ -v
+alias xargs="xargs " # Expand aliases given as arguments
 alias xargsn=xargs\ --delimiter=\"\\n\"
 
 if type ack-grep > /dev/null; then
@@ -29,5 +30,5 @@ fi
 if [[ "$OS" = "linux" ]]; then
   alias grep=grep\ --color=auto
   alias topproc="ps axo comm,pmem,rss,vsz --sort -rss | head -n 11"
-  alias sudo=sudo\ --preserve-env=HOME
+  alias sudo="sudo --preserve-env=HOME " # Expand aliases given as arguments
 fi
