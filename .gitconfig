@@ -27,7 +27,7 @@
 [include]
     path = .gitconfig-host-specific
 [diff]
-    algorithm = patience
+    algorithm = histogram
     external = difft
 [commit]
 	verbose = true
