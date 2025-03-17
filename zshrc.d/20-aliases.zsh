@@ -21,7 +21,7 @@ alias df=df\ -h
 alias diff=diff\ -u
 alias d=dirs\ -v
 alias xargs="xargs " # Expand aliases given as arguments
-alias xargsn=xargs\ --delimiter=\"\\n\"
+alias xargsn="xargs --delimiter=\"\\n\" " # Expand aliases given as arguments
 
 if type ack-grep > /dev/null; then
   alias ack=ack-grep
