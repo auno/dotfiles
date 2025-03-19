@@ -14,6 +14,7 @@ alias ll=ls\ -l
 alias la=ls\ -a
 alias l=ls
 alias lla=ls\ -la
+alias lld=ls\ -ld
 alias g=gvim\ --remote-silent
 alias diff=diff\ -u
 alias gvim=UBUNTU_MENUPROXY=\ gvim
