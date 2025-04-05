@@ -30,9 +30,9 @@ fi
 
 # Lazy load RBEnv into a shell session *as a function*
 if [[ "$UID" != "0" && -d "$HOME/.rbenv" ]]; then
-  export PATH="$HOME/.rbenv/shims:$PATH"
+  zshrc::add_to_path "$HOME/.rbenv/shims"
+  #export PATH="$HOME/.rbenv/shims:$PATH"
   rbenv() {
-    export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$($HOME/.rbenv/bin/rbenv init -)"
     rehash
     rbenv "$@"

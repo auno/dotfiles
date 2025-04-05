@@ -1,9 +1,8 @@
-# vim: set ts=4 sw=4 expandtab:
+# vim: set ts=2 sw=2 expandtab:
 
-export PATH="$HOME/.local/bin:$PATH"
+zshrc::add_to_path "$HOME/.local/bin"
 
 # Add Rust to PATH if available
 if [ -d "$HOME/.cargo/bin" ]; then
-  export PATH="$HOME/.cargo/bin:$PATH"
+  zshrc::add_to_path "$HOME/.cargo/bin"
 fi
-
