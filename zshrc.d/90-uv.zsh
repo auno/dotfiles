@@ -1,3 +1,5 @@
+# vim: set ts=2 sw=2 expandtab:
+
 export UV_TOOL_BIN_DIR="$HOME/.local/share/uv/tools.bin"
 
 zshrc::add_to_path "$UV_TOOL_BIN_DIR"
