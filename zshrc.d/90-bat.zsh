@@ -14,5 +14,14 @@ if type $BAT > /dev/null; then
   export MANROFFOPT="-c"
   alias cat="bat --plain --paging=never"
   alias -g -- "--help"="--help | bat -plhelp"
+
+  _bat() {
+    unset -f _bat
+    . <(bat --completion zsh)
+    compdef _bat_main bat
+    _bat_main "$@"
+  }
+
+  compdef _bat bat
 fi
 
