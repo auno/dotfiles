@@ -1,3 +1,7 @@
+export UV_TOOL_BIN_DIR="$HOME/.local/share/uv/tools.bin"
+
+zshrc::add_to_path "$UV_TOOL_BIN_DIR"
+
 if type uv > /dev/null; then
   ___load_uv_completions() {
     unset -f _uv
