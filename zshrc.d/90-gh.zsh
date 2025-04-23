@@ -1,5 +1,6 @@
 if type gh > /dev/null; then
   _gh() {
+    unset _gh
     . <(gh completion --shell zsh)
     _gh "$@"
   }
