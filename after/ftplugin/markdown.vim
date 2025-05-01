@@ -3,6 +3,10 @@ setlocal tabstop=2
 
 function s:MarkdownHeadingFoldExpr()
   let line = getline(v:lnum)
+
+  if v:lnum == line("$") && line =~ '^\s*<!--.*vim:.*-->\s*$'
+    return '0'
+  endif
   
   if line[0] != '#'
     return '='
