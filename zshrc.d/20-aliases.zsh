@@ -32,5 +32,5 @@ fi
 if [[ "$OS" = "linux" ]]; then
   alias grep=grep\ --color=auto
   alias topproc="ps axo comm,pmem,rss,vsz --sort -rss | head -n 11"
-  alias sudo="sudo --preserve-env=HOME " # Expand aliases given as arguments
+  alias sudo="sudo --no-update --preserve-env=HOME " # Expand aliases given as arguments
 fi
