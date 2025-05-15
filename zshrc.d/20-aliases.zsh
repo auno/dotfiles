@@ -1,5 +1,7 @@
 # vim: set ts=2 sw=2 expandtab:
 
+autoload is-at-least
+
 if type eza > /dev/null; then
   alias eza=eza\ --group-directories-first
   alias ls=eza
@@ -32,5 +34,13 @@ fi
 if [[ "$OS" = "linux" ]]; then
   alias grep=grep\ --color=auto
   alias topproc="ps axo comm,pmem,rss,vsz --sort -rss | head -n 11"
-  alias sudo="sudo --no-update --preserve-env=HOME " # Expand aliases given as arguments
+
+  ___ZSHRC_SUDO_OPTIONS=("--preserve-env=HOME")
+  ___ZSHRC_SUDO_VERSION=$((sudo --version | grep '^Sudo version' | grep -Po '\d+\.\d+\.\d+') 2>/dev/null || echo '0.0.0')
+
+  if is-at-least 1.9.12 "$___ZSHRC_SUDO_VERSION"; then
+    ___ZSHRC_SUDO_OPTIONS+=("--no-update")
+  fi
+
+  alias sudo="sudo $___ZSHRC_SUDO_OPTIONS " # Expand aliases given as arguments
 fi
