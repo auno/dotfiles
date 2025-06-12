@@ -77,6 +77,9 @@ bindkey '^[[6~' history-beginning-search-forward    # PAGE DOWN
 bindkey '^[[H'	beginning-of-line                   # HOME
 bindkey '^[[F'	end-of-line                         # END
 
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+
 bindkey '^Xe'   edit-command-line
 
 # Prepend sudo using Alt-s
