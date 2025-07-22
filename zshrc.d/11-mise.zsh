@@ -1,7 +1,7 @@
 # vim: set ts=2 sw=2 expandtab:
 
 if type mise > /dev/null; then
-  zshrc::add_to_path "$HOME/.local/share/mise/shims"
+  zshrc::prepend_to_path "$HOME/.local/share/mise/shims"
 
   MISE=$(command -v mise)
 

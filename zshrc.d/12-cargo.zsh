@@ -1,6 +1,6 @@
 # vim: set ts=2 sw=2 expandtab:
 
-zshrc::add_to_path "$HOME/.cargo/bin"
+zshrc::append_to_path "$HOME/.cargo/bin"
 
 _rustup() {
   unset -f _rustup
