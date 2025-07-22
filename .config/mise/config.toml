@@ -1,3 +1,2 @@
-[tools]
-usage = "latest"
-jq = "latest"
+[settings]
+experimental = true
