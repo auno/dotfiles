@@ -1,3 +1,4 @@
 [tools]
-usage = "latest"
+fzf = "latest"
 jq = "latest"
+usage = "latest"
