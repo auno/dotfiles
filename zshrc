@@ -69,19 +69,19 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 bindkey -e # Set initial keymap to emacs emulation.
 
-bindkey '^[[1~' beginning-of-line                   # HOME
-bindkey '^[[2~' overwrite-mode                      # INSERT
-bindkey '^[[3~' delete-char                         # DELETE
-bindkey '^[[4~' end-of-line                         # END
-bindkey '^[[5~' history-beginning-search-backward   # PAGE UP
-bindkey '^[[6~' history-beginning-search-forward    # PAGE DOWN
-bindkey '^[[H'	beginning-of-line                   # HOME
-bindkey '^[[F'	end-of-line                         # END
+bindkey '^[[1~'     beginning-of-line                   # Home
+bindkey '^[[2~'     overwrite-mode                      # Insert
+bindkey '^[[3~'     delete-char                         # Delete
+bindkey '^[[4~'     end-of-line                         # End
+bindkey '^[[5~'     history-beginning-search-backward   # Page Up
+bindkey '^[[6~'     history-beginning-search-forward    # Page Down
+bindkey '^[[H'      beginning-of-line                   # Home
+bindkey '^[[F'      end-of-line                         # End
 
-bindkey "^[[1;5D" backward-word
-bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D"   backward-word                       # Ctrl+Left
+bindkey "^[[1;5C"   forward-word                        # Ctrl+Right
 
-bindkey '^Xe'   edit-command-line
+bindkey '^Xe'       edit-command-line                   # Ctrl+X E
 
 # Prepend sudo using Alt-s
 function prepend-sudo {
