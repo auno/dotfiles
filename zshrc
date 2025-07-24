@@ -39,6 +39,7 @@ setopt NO_AUTO_MENU
 setopt NO_AUTO_REMOVE_SLASH
 setopt NO_CHECK_JOBS
 setopt NO_CLOBBER
+setopt NO_FLOW_CONTROL
 setopt NO_HUP
 setopt PUSHD_SILENT
 setopt RE_MATCH_PCRE
