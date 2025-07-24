@@ -29,20 +29,23 @@ if type fzf > /dev/null; then
     [[ -n "$TERMUX__PREFIX" ]] && [[ -f "$TERMUX__PREFIX/share/fzf/completion.zsh" ]] && source "$TERMUX__PREFIX/share/fzf/completion.zsh"
   fi
 
-  man-fzf() {
-    if [[ $# == 0 ]]; then
+  fzf-select-man-page() {
+    if [[ "$BUFFER" == "man" ]]; then
       args=$(
+        set -o pipefail
         man -k . \
           | fzf -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' \
           | tr -d '()' \
           | awk '{printf "%s ", $2} {print $1}'
       )
-      test -n "$args" || return
-      "man" "${=args}"
-    else
-      "man" "$@"
+
+      if [[ "$?" -eq 0 ]]; then
+        BUFFER="man $args"
+      fi
     fi
+
+    zle .$WIDGET "$@"
   }
 
-  alias man=man-fzf
+  zle -N accept-line fzf-select-man-page
 fi
