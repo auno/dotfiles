@@ -1,9 +1,5 @@
 # vim: set ts=4 sw=4 expandtab:
 
-if [ -r "$HOME/.zsh/zshrc-functions" ]; then 
-  . "$HOME/.zsh/zshrc-functions"
-fi
-
 #
 #  VARIABLES
 #
@@ -122,6 +118,6 @@ fi
 # INCLUDE CONFIG DIR
 #
 
-for file in "$HOME"/.zsh/zshrc.d/*.zsh; do
+for file in "$ZDOTDIR"/zshrc.d/*.zsh; do
     source "$file"
 done
