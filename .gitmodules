@@ -1,6 +1,0 @@
-[submodule ".vim"]
-	path = vim
-	url = ../.vim.git
-[submodule ".zsh"]
-	path = zsh
-	url = ../.zsh.git
