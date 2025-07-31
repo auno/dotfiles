@@ -17,7 +17,7 @@
     lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) - %C(bold blue)%aD%C(reset) %C(dim green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) - %C(bold blue)%aD%C(reset) %C(dim green)(%ar)%C(reset) %C(bold blue)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 [core]
-    excludesfile = /home/auno/.gitignore
+    excludesfile = ~/.config/git/ignore
     pager = less -SRFX
 [push]
     default = simple
@@ -25,7 +25,7 @@
 [github]
     user = auno
 [include]
-    path = .gitconfig-host-specific
+    path = ~/.config/git/config.local
 [diff]
     algorithm = histogram
     external = difft
