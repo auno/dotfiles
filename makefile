@@ -5,7 +5,7 @@ LINK_TARGETS = \
 	atoolrc \
 	screenrc \
 	zsh/zshenv \
-	vim/vimrc
+	vim
 
 define LINK_RULE =
 $(2): $(1)
