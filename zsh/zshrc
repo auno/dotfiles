@@ -107,14 +107,6 @@ if [ -r "$DIRCOLORS_FILE" ]; then
 fi
 
 #
-# SYNTAX HIGHLIGHTING
-#
-
-if [ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
-    source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
-
-#
 # INCLUDE CONFIG DIR
 #
 
