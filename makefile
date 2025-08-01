@@ -1,10 +1,5 @@
 .DEFAULT_GOAL := all
 
-ARTIFACTS =
-.PHONY: clean
-clean:
-	echo rm -f $(ARTIFACTS)
-
 LINK_TARGETS = \
 	x11vncrc \
 	atoolrc \
@@ -25,3 +20,6 @@ $(LINKS):
 
 all: $(LINKS)
 
+.PHONY: clean
+clean:
+	rm -f $(ARTIFACTS)
