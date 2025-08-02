@@ -25,4 +25,6 @@ if type eza > /dev/null; then
 
     compdef _eza eza
   fi
+
+  alias eza=eza\ --group-directories-first\ --no-quotes
 fi

@@ -3,7 +3,6 @@
 autoload is-at-least
 
 if type eza > /dev/null; then
-  alias eza=eza\ --group-directories-first
   alias ls=eza
 elif [[ "$OS" = "linux" ]]; then
   alias ls=ls\ --color=auto\ -h
