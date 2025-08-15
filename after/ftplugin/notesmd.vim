@@ -1,6 +1,8 @@
 setlocal foldmethod=expr
+setlocal textwidth=100
 setlocal shiftwidth=2
 setlocal tabstop=2
+setlocal expandtab
 
 function s:MarkdownNotesHeadingFoldExpr()
   if exists("b:__markdown_heading_fold_expr_last_tick") == 0
@@ -20,7 +22,11 @@ function s:MarkdownNotesHeadingFoldExpr()
     let prev_level = 0
 
     for [line_number, level] in headings
-      let fold_start_line_number = (line_number >= 1 && getline(line_number - 1) == "") ? line_number - 1 : line_number
+      if level > &foldnestmax
+        continue
+      endif
+
+      let fold_start_line_number = (line_number > 1 && getline(line_number - 1) == "") ? line_number - 1 : line_number
       let b:__markdown_heading_fold_expr_levels[fold_start_line_number] = '>'.level
 
       if level < prev_level
