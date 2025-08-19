@@ -7,6 +7,7 @@ all: update
 
 .PHONY: update
 update:
+	( . <("$(MISE)" env --cd "$(HOME)" | grep 'export MISE_'); "$(MISE)" self-update --yes )
 	( . <("$(MISE)" env --cd "$(HOME)" | grep 'export MISE_'); "$(MISE)" upgrade )
 
 .PHONY: clean
