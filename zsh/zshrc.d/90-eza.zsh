@@ -27,4 +27,5 @@ if type eza > /dev/null; then
   fi
 
   alias eza=eza\ --group-directories-first\ --no-quotes
+  alias tree=eza\ --tree
 fi
