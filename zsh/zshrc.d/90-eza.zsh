@@ -11,6 +11,7 @@ if type eza > /dev/null; then
         . "${___EZA_COMPLETIONS_PATH}"
         compdef __eza eza
       else
+        compdef -d eza
         ___EZA_COMPLETIONS_FAILED=1
       fi
 
