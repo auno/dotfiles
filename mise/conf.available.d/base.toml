@@ -1,5 +1,6 @@
 [tools]
 bat = "latest"
+btop = "latest"
 difftastic = "latest"
 dust = "latest"
 eza = { version = "latest", postinstall = "fetch-completions-github eza eza-community/eza \"$(basename \"$MISE_TOOL_INSTALL_PATH\")\" \"completions-$(basename \"$MISE_TOOL_INSTALL_PATH\").tar.gz\" \"*/_eza\"" }
