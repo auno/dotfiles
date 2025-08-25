@@ -1,5 +1,7 @@
 [tools]
 node = [ "latest", "lts", "24", "22", "20", "18" ]
+opentofu = "latest"
+cosign = "latest"
 
 [env]
 MISE_NODE_COREPACK = "true"
