@@ -35,3 +35,9 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 
 vim.o.wrap = false
+
+vim.o.history = 1000
+vim.o.undolevels = 1000
+vim.o.shada = "'100,<100"
+
+vim.o.shiftround = true
