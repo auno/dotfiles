@@ -1,7 +1,8 @@
 .DEFAULT_GOAL := all
 
 SUBDIRS = \
-	mise
+	mise \
+	nvim
 
 RECURSIVE_TARGETS = \
 	all \
