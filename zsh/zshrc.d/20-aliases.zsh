@@ -26,6 +26,10 @@ alias xargs="xargs " # Expand aliases given as arguments
 alias xargsn="xargs --delimiter=\"\\n\" " # Expand aliases given as arguments
 alias dmesg="dmesg --reltime --color=always | less -SR +G"
 
+for cmd in ffmpeg ffplay ffprobe; do
+  alias "$cmd"="$cmd -hide_banner"
+done
+
 if type ack-grep > /dev/null; then
   alias ack=ack-grep
 fi
