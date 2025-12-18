@@ -2,9 +2,7 @@
 node = [ "latest", "lts", "24", "22", "20", "18" ]
 opentofu = "latest"
 gh = "latest"
-
-[env]
-MISE_NODE_COREPACK = "true"
+pnpm = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
