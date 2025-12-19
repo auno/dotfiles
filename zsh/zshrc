@@ -1,15 +1,34 @@
 # vim: set ts=4 sw=4 expandtab:
 
 #
-#  VARIABLES
+#  LLM_AGENT
+#
+
+if [[ -n "$LLM_AGENT" ]]; then
+    export LLM_AGENT=$(
+        setopt extendedglob
+        LLM_AGENT=${LLM_AGENT//[_ ]/-}
+        LLM_AGENT=${(L)LLM_AGENT}
+        LLM_AGENT=${LLM_AGENT//[^-a-z0-9]/}
+        LLM_AGENT=${LLM_AGENT//-##/-}
+        echo "$LLM_AGENT"
+    )
+fi
+
+#
+#  HISTORY
 #
 
 HISTFILE=~/.zsh_history
 SAVEHIST=1000000
 HISTSIZE=1000000
 
+if [[ -n "$LLM_AGENT" ]]; then
+    HISTFILE="$HISTFILE.agent.$LLM_AGENT"
+fi
+
 #
-# EXPORTS
+#  EXPORTS
 #
 
 export DO_NOT_TRACK=1

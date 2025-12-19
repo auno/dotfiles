@@ -2,6 +2,12 @@
 
 setopt PROMPT_SUBST
 
+if [[ -n "$LLM_AGENT" ]]; then
+  export PROMPT="%(?.. %{$fg_bold[blue]%}[%{$fg_bold[red]%}%?%{$fg_bold[blue]%}]) %{${fg_bold[yellow]}%}agent/$LLM_AGENT %{$fg_no_bold[default]%}%~ %{$fg_bold[default]%}>> %{$reset_color%}"
+  unset RPROMPT
+  return
+fi
+
 git_prompt_branch() {
   local branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
 
