@@ -9,6 +9,11 @@ if type mise > /dev/null; then
     (
       # `--cd "$HOME"` makes sure env is not affected by any config in $CWD
       . <("$MISE" env --cd "$HOME" | grep 'export MISE_')
+
+      if [ -r "$HOME/.config/mise/github_token" ]; then
+        export MISE_GITHUB_TOKEN=$(command cat "$HOME/.config/mise/github_token")
+      fi
+
       "$MISE" "$@"
     )
   }
