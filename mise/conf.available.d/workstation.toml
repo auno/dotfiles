@@ -1,8 +1,10 @@
 [tools]
+aws = "latest"
 node = [ "latest", "lts", "24", "22", "20", "18" ]
 opentofu = "latest"
 gh = "latest"
 pnpm = "latest"
+granted = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
