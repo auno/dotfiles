@@ -48,3 +48,13 @@ history = 10000
 [window.dimensions]
 columns = 135
 lines = 35
+
+[keyboard]
+bindings = [
+  { key = "Up",   mods = "Control", mode = "~Vi|~Search", action = "ToggleViMode" },
+  { key = "Up",   mods = "Control", mode = "~Vi|~Search", action = "SearchBackward" },
+  { key = "Up",   mods = "Control", mode = "~Vi|~Search", chars = " [a-z]+@[a-z]+ >>" },
+  { key = "Up",   mods = "Control", mode = "~Vi|~Search", action = "SearchConfirm" },
+  { key = "Up",   mods = "Control", mode = "Vi|~Search",  action = "SearchNext" },
+  { key = "Down", mods = "Control", mode = "Vi|~Search",  action = "SearchPrevious" },
+]
