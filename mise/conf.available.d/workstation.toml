@@ -1,10 +1,10 @@
 [tools]
-aws = "latest"
+aws = "2.34.39"
 node = [ "latest", "lts", "24", "22", "20", "18" ]
-opentofu = "latest"
-gh = "latest"
-pnpm = "latest"
-granted = "latest"
+opentofu = "1.11.6"
+gh = "2.92.0"
+pnpm = "11.0.1"
+granted = "0.39.0"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
