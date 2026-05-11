@@ -2,7 +2,7 @@
 
 if type gh > /dev/null; then
   _gh() {
-    unset _gh
+    unset -f _gh
     . <(gh completion --shell zsh)
     _gh "$@"
   }

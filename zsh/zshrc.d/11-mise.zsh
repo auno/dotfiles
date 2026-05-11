@@ -19,7 +19,7 @@ if type mise > /dev/null; then
   }
 
   _mise() {
-    unset _mise
+    unset -f _mise
     . <(mise completion zsh)
     _mise "$@"
   }

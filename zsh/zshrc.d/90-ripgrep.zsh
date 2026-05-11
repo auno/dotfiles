@@ -8,7 +8,7 @@ fi
 
 if type rg > /dev/null; then
   _rg() {
-    unset _rg
+    unset -f _rg
     . <(rg --generate complete-zsh)
     _rg "$@"
   }
