@@ -3,6 +3,7 @@ aws = "2.34.39"
 node = [ "latest", "lts", "24", "22", "20", "18" ]
 opentofu = "1.11.6"
 gh = "2.92.0"
+npm = "latest"
 pnpm = "11.0.1"
 granted = "0.39.0"
 "aqua:github/copilot-cli" = "latest"
