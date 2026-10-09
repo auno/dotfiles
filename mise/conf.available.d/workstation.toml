@@ -1,5 +1,6 @@
 [tools]
 aws = "2.34.39"
+amazon-ecr-credential-helper = "0.12.0"
 node = [ "latest", "lts", "24", "22", "20", "18" ]
 opentofu = "1.11.6"
 gh = "2.92.0"
