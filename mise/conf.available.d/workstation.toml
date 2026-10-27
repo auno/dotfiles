@@ -1,9 +1,9 @@
 [tools]
-aws = "2.34.39"
+aws = { version = "2.38.2", symlink_bins = "true" }
 amazon-ecr-credential-helper = "0.12.0"
 node = [ "latest", "lts", "24", "22", "20", "18" ]
-opentofu = "1.11.6"
-gh = "2.92.0"
+opentofu = "1.13.1"
+gh = "2.102.0"
 npm = "latest"
 pnpm = "latest"
 granted = "0.39.0"
