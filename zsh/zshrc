@@ -4,6 +4,10 @@
 #  LLM_AGENT
 #
 
+if [[ "$COPILOT_CLI" == "1" ]]; then
+    LLM_AGENT="copilot"
+fi
+
 if [[ -n "$LLM_AGENT" ]]; then
     export LLM_AGENT=$(
         setopt extendedglob
