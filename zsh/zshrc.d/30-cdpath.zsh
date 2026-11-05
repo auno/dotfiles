@@ -3,10 +3,10 @@ if [[ -n "$LLM_AGENT" ]]; then
   return
 fi
 
-export CDPATH="$HOME"
+CDPATH="$HOME"
 
 if [[ -d "$HOME/work" ]]; then
-  export CDPATH=$(
+  CDPATH=$(
     (echo "$CDPATH"; realpath "$HOME/work/"*) \
       | paste -sd:
   )
