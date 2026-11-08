@@ -19,7 +19,7 @@ if type grc > /dev/null && [[ -f "/etc/grc.zsh" ]]; then
     if (( $+functions[$ignored_cmd.pre-grc-backup] )); then
       functions -c $ignored_cmd.pre-grc-backup $ignored_cmd
       unfunction $ignored_cmd.pre-grc-backup
-    else
+    elif (( $+functions[$ignored_cmd] )); then
       unfunction $ignored_cmd
     fi
   done
