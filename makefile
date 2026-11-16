@@ -14,21 +14,31 @@ LINK_TARGETS = \
 	atoolrc \
 	screenrc \
 	zsh/zshenv \
-	vim
+	vim \
+	cargo/config.toml:.cargo/config.toml \
+
+%/:
+	mkdir -p $@
 
 define LINK_RULE =
-$(2): $(1)
+$(2): $(1) | $(dir $(2))
 LINKS += $(2)
 ARTIFACTS += $(2)
 endef
+
+$(foreach link_target,$(LINK_TARGETS),\
+	$(eval $(call LINK_RULE,\
+		$(word 1,$(subst :, ,$(link_target))),\
+		$(addprefix $(HOME)/,\
+			$(if $(word 2,$(subst :, ,$(link_target))),\
+				$(word 2,$(subst :, ,$(link_target))),\
+				$(addprefix .,$(notdir $(link_target))))))))
 
 define MAKE_SUBDIRS
 $(foreach subdir,$(SUBDIRS),
 $(MAKE) -C "$(subdir)" $(1)
 )
 endef
-
-$(foreach link_target,$(LINK_TARGETS),$(eval $(call LINK_RULE,$(link_target),$(addprefix $(HOME)/., $(notdir $(link_target))))))
 
 .PHONY: $(LINKS)
 $(LINKS): %: | git-pull
