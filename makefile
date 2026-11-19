@@ -16,6 +16,7 @@ LINK_TARGETS = \
 	zsh/zshenv \
 	vim \
 	cargo/config.toml:.cargo/config.toml \
+	cargo/config.shared.toml:.cargo/config.shared.toml
 
 %/:
 	mkdir -p $@
